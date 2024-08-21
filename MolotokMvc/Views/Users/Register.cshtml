@@ -1,0 +1,130 @@
+﻿@model MolotokMvc.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="text-center mt-4">Register</h4>
+<hr class="mb-4" />
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 20vh;">
+    <div class="col-md-6">
+        <form asp-action="Register" method="post" enctype="multipart/form-data" class="registration-form p-4 shadow-sm bg-white rounded">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group">
+                <label asp-for="Nick" class="control-label"></label>
+                <input asp-for="Nick" class="form-control" />
+                <span asp-validation-for="Nick" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="Password" id="Password" class="form-control" type="password" />
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                            <i class="fas fa-eye" id="passwordEye"></i>
+                        </button>
+                    </div>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <small id="passwordHelp" class="form-text text-muted">
+                    Password must be at least 4 characters long, include one uppercase letter, one lowercase letter, and one digit.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="user">User</option>
+                    <option value="company">Company</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control description-textarea" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Avatar" class="control-label"></label>
+                <input type="file" name="Avatar" class="form-control" />
+                <span asp-validation-for="Avatar" class="text-danger"></span>
+            </div>
+            <div class="row justify-content-center" style="margin-top:10px">
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>
+        <div class="text-center mt-3">
+            <a asp-action="Login" class="text-secondary">Back to login</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('Password');
+            const passwordEye = document.getElementById('passwordEye');
+
+            togglePassword.addEventListener('click', function () {
+                const type = password.type === 'password' ? 'text' : 'password';
+                password.type = type;
+
+                if (type === 'password') {
+                    passwordEye.classList.remove('fa-eye-slash');
+                    passwordEye.classList.add('fa-eye');
+                } else {
+                    passwordEye.classList.remove('fa-eye');
+                    passwordEye.classList.add('fa-eye-slash');
+                }
+            });
+        });
+    </script>
+}
+
+<style>
+    .registration-form {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .registration-form .form-control {
+        border-radius: 5px;
+    }
+
+    .registration-form .btn {
+        border-radius: 5px;
+    }
+
+    .description-textarea {
+        min-height: 40px;
+        max-height: 300px;
+        resize: vertical;
+    }
+</style>

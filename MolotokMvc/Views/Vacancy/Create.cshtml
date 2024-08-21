@@ -1,0 +1,33 @@
+﻿<form action="Create" method="post" class="p-4 rounded shadow-sm bg-light">
+    <div class="form-group">
+        <label for="Position" class="font-weight-bold">Position</label>
+        <input type="text" name="Position" id="Position" placeholder="Enter Position" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea name="Description" id="Description" placeholder="Description" class="form-control" style="max-height: 350px; resize: vertical;"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Tags" class="font-weight-bold">Tags</label>
+        <input type="text" name="Tags" id="Tags" placeholder="Add tags..." class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="tagset" class="font-weight-bold">Select Tags</label>
+        <select class="form-control" id="tagset" onchange="addTag(event)">
+            <option value="0" disabled selected>Select Tags</option>
+            @foreach (Tag item in ViewBag.Tags)
+            {
+                <option value="@item.TagName">@item.TagName</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mt-3">Add Vacancy</button>
+</form>
+
+<script>
+    function addTag(event) {
+        const tagsInput = document.getElementById('Tags');
+        tagsInput.value += event.target.value + ', ';
+        event.target.value = 0;
+    }
+</script>

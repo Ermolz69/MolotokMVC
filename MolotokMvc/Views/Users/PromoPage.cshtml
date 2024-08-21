@@ -1,0 +1,60 @@
+﻿@model MolotokMvc.Models.PromoViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Molotok - Job Search Portal</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .promo-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .promo-stat {
+            font-size: 2rem;
+            color: #007bff;
+        }
+        .promo-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        .cta-button {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="promo-section">
+        <h1>Welcome to Molotok!</h1>
+        <p class="promo-text">Your gateway to exciting job opportunities.</p>
+
+        <div class="row">
+            <div class="col-md-3">
+                <p class="promo-stat">@Model.UserCount</p>
+                <p>Registered Users</p>
+            </div>
+            <div class="col-md-3">
+                <p class="promo-stat">@Model.VacancyCount</p>
+                <p>Job Vacancies</p>
+            </div>
+            <div class="col-md-3">
+                <p class="promo-stat">@Model.ResumeCount</p>
+                <p>Resumes Posted</p>
+            </div>
+            <div class="col-md-3">
+                <p class="promo-stat">@Model.CompanyCount</p>
+                <p>Companies Hiring</p>
+            </div>
+        </div>
+
+        <p class="promo-text">Join our community and start your journey to a new career today!</p>
+        <a href="/Users/Register" class="btn btn-primary cta-button">Sign Up Now</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
