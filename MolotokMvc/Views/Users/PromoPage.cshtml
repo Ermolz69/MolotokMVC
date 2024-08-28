@@ -8,21 +8,68 @@
     <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
         .promo-section {
-            padding: 50px;
+            padding: 50px 20px;
             text-align: center;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            width: 80%;
+            max-width: 1000px;
         }
-        .promo-stat {
-            font-size: 2rem;
+
+        .promo-section h1 {
+            font-size: 3rem;
             color: #007bff;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
+
         .promo-text {
-            margin-top: 20px;
-            font-size: 1.2rem;
+            margin-top: 10px;
+            font-size: 1.5rem;
+            color: #555;
         }
+
+        .promo-stat {
+            font-size: 3rem;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
         .cta-button {
             margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+        }
+
+        .promo-stat-box {
+            transition: transform 0.3s;
+        }
+
+        .promo-stat-box:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -31,30 +78,36 @@
         <h1>Welcome to Molotok!</h1>
         <p class="promo-text">Your gateway to exciting job opportunities.</p>
 
-        <div class="row">
-            <div class="col-md-3">
+        <div class="row mt-5">
+            <div class="col-md-3 promo-stat-box">
+                <i class="stat-icon fas fa-users"></i>
                 <p class="promo-stat">@Model.UserCount</p>
                 <p>Registered Users</p>
             </div>
-            <div class="col-md-3">
-                <p class="promo-stat">@Model.VacancyCount</p>
-                <p>Job Vacancies</p>
-            </div>
-            <div class="col-md-3">
-                <p class="promo-stat">@Model.ResumeCount</p>
-                <p>Resumes Posted</p>
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-3 promo-stat-box">
+                <i class="stat-icon fas fa-building"></i>
                 <p class="promo-stat">@Model.CompanyCount</p>
                 <p>Companies Hiring</p>
             </div>
+            <div class="col-md-3 promo-stat-box">
+                <i class="stat-icon fas fa-briefcase"></i>
+                <p class="promo-stat">@Model.VacancyCount</p>
+                <p>Job Vacancies</p>
+            </div>
+            <div class="col-md-3 promo-stat-box">
+                <i class="stat-icon fas fa-file-alt"></i>
+                <p class="promo-stat">@Model.ResumeCount</p>
+                <p>Resumes Posted</p>
+            </div>
         </div>
 
-        <p class="promo-text">Join our community and start your journey to a new career today!</p>
-        <a href="/Users/Register" class="btn btn-primary cta-button">Sign Up Now</a>
+        <p class="promo-text mt-4">Join our community and start your journey to a new career today!</p>
+        <p class="promo-text mt-4">START MAKING YOUR OWN DESTINY</p>
+        <a href="/Users/Register" class="btn cta-button">Sign Up Now</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
